@@ -4,7 +4,7 @@ pipeline{
         stage("TF Init"){
             steps{
                 echo "Executing Terraform Init"
-                sh "terraform init"
+                sh "terraform init -reconfigure"
             }
         }
         stage("TF Validate"){
@@ -28,6 +28,9 @@ pipeline{
         stage("Invoke Lambda"){
             steps{
                 echo "Invoking your AWS Lambda"
+             
+                sh "aws lambda invoke --function-name yogesh_s_b3_function out --log-type Tail "
+                
             }
         }
     }
