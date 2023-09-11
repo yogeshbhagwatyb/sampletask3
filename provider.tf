@@ -2,4 +2,10 @@ provider "aws" {
   region  = "us-east-1" # Don't change the region
 }
 
-# Add your S3 backend configuration here
+terraform {
+  backend "s3" {
+    bucket = "object12"
+    key    = "yogesh.bhagwat"
+    region = "us-east-1"
+  }
+}
